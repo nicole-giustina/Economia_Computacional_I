@@ -9,7 +9,7 @@ idade = 0
 texto = ""
 
 # Entrada
-idade = int(input("\nQual a sua idade?"))
+idade = int(input("\nQual a sua idade ?"))
 
 # Processamento
 if idade >= 18:

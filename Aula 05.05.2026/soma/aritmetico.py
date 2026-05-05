@@ -1,20 +1,20 @@
 def soma (x,y):
-    """Processamento de dados"""
+    """Processamento de dados; esta função soma dois números"""
     return x+y
 
 
+def mult(x:float, y:float) ->float:
+    """Esta função multiplica dois números"""
+    return x*y
 
-def main():
-    # Entrada de dados
-    dados = leitura_dados()
+def div(x:float, y:float) ->float:
+    """Esta função divide dois números"""
+    if y==0:
+        resultado = 'Não é possível dividir por zero'
+        return resultado
+    else:
+        return x/y
 
-    # Processamento
-    resultado = soma(dados[0], dados[1])
 
-    # Saída
-    saida(dados, resultado)
-
-if __name__ == '__main__':
-    main()
     
     

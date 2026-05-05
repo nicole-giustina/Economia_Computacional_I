@@ -2,8 +2,8 @@ def soma (x,y):
     """Processamento de dados; esta função soma dois números"""
     return x+y
 
-
-def mult(x:float, y:float) ->float:
+# posso colocar o tipo da variável e do resultado da função dessa forma com ':', sem prejuízo no funcionamento
+def mult(x:float, y:float) ->float: 
     """Esta função multiplica dois números"""
     return x*y
 

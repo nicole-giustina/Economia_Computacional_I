@@ -1,0 +1,32 @@
+Ambientes virtuais permitem que se compacte tudo que é preciso para que o programa funcione em uma única estrutura. Assim, se coloca tudo que precisa para que o programa funcione em um único ambiente. 
+Temos dois principais, o Venv e o Conda (esse último é mais relevante para computação científica, enquanto primeiro é mais para computação geral).
+No site do Python encontro a biblioteca padrão que está disponível na última versão do interpretador, e posso acessar qualquer pacote por meio da função import nome_do_pacote e nome_do_pacote.nome_da_funcao.
+Mas ainda existem repositorios livres com outros pacotes
+A biblioteca padrao do pyhton já tem o pacote venv para gerenciar ambientes virtuais; a instalação de desintalação de pacotes adicionais é feita pelo aplicativo pip.
+Passos para criar um ambiente virtual: crtia uma pasta com o nome do programa a ser desenvolvido e na sequencia já fazemos um ambiente virtual com o mesmo nome (aqui usamos o anaconda prompt power schell; tem que ter o "base"). Quando crio o modeulo pelo -m venv nome_do_ambiente, estou criando uma cópia do python limpa, só com a biblioteca padrao e sem as coisas e penduuricalhos do anaconda.
+depois vou precisar migrar, ntrar no novo ambiente virtual criado: nome_do_ambiente\Scripts\activate (momento em que vai entrar o nome do ambiente antes do base)
+Agora posso instalar somente os pacotes que porventura vou p´recisar naquele programa (uso a função "pip install nome_do_pacote)
+usamos "deactivate" para sair do ambiente e retornar a base
+
+obs. para usar o conda ao inves do venv, usamos o conda cheat sheet ou o seguinte: conda create -n nome_do_ambiente python=(número da versao do python que quero, posso olhar qual é e pedir a última); quando ativo, o base some aqui, já que no venv ele nao controla (por ser algo do anaconda)
+
+obs.: Para atualizar o pip, é preferivel atualizar todo anaconda, apra nao evitar que o pip atualizado nao converse com outras versoes de outros programas.
+
+obs.: usamos "ls" para ver todos os aqruivos de uma pasta; "ctrl + l" limpa a tela; "cd" seguido de espaço e o inicio do nome da pasta ou arquivo seguinte abre este; "mkdir" e espaço cria uma nova pasta naquele local; "cd .." volta uma pasta para trás;
+
+PROGRAMAÇÃO EM PYTHON
+Nessa forma de programação, todo o código, com poucas exceções, sao funções matematicamente bem definidas (nao usamos mais procedimentos, ou seja funções sem return, pois quando nao tem return eu não sei o que está saindo dali, pode sair qualquer coisa, inclusive um erro). É a preferível a partir de agora.
+Preciso lembrar que usamos (variável que designa a função): (domínio)x(contradomínio)->(resultado); EXEMPLO: a função soma poderia ser designada como: +:RxR->R e a divisão por: /:RxR*->R (o contradominio aqui não pode incluir o zero, entao é o conjunto dos numeros reais sem o zero).
+Sempre vou olhar agora a expressao que designa a função (y = f(x)) como um algoritmo.
+
+f:R->R
+y= f(x) --> pego um dado que é x, apliquei uma transformação f e produzi um dado que é y
+
+g:R->R  --> depois, pego o dado y, apliquei uma transformação g e produzi um dado que é z # esses dois processamentos de dados são funcionais. Assim preciso primeiro fazer as funções individuais. Só depois que fiz separado, agora faço a função h abaixo que vai compor essas transformações.
+z=g(y)
+
+h:R->R
+h(x) = g(f(x))
+
+#hoje fazemos isso apenas sequencialmente, mas é possivel rodas várias funções de pipeline paralelamente (a partir de y, por exemplo, posso rodar várias funções além da g(y) ao mesmo tempo.
+OBS.: a diferença entre uma função com def antes e a escrita direta da função é que no primeiro o python cria todo um ambiente para rodas o código, enquanto na segunda só vai usar uma vez e esquecer (costuma rodas mais rápido). 

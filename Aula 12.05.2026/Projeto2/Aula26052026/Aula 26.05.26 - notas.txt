@@ -1,0 +1,10 @@
+Aula 26.05.26
+
+- o ambiente de testes é o anaconda, mas o programa final será feito no powerschell, para poder criar o ambiente virtual próprio para o projeto. Em geral, instalamos o jupyter lab para fazer os testes, e quando terminar a fase toda de testes, desinstalamos.
+
+- A classe é o arquétipo do objeto, e esse objeto tem características (atributos). Uso o "self" para vincular esses atributos ao objeto em si. Esse método é o primeiro (para criar os atributos), posso criar outros depois se necessário.
+
+- Métodos são funções que estão presas dentro de classes. 
+
+- uso o self para indicar que é uma linguagem de objeto
+

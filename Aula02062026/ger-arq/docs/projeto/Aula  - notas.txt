@@ -1,0 +1,10 @@
+Aula 02.06.26
+
+- No próprio anaconda poso criar um novo ambiente em Environments-create.
+A ordem é: pastas-ambiente-desenvolver
+
+- objeto python: tudo é objeto. inclusive, arquivos são objetos. Vou criar um objeto do tipo file
+
+- arquivos json são objetos para javascript, preciso usar uma função para transformar em um objeto para python. Posso usar a função json.load e não a função open, para ler como objeto do tipo python.
+
+- fazer o 10 minutos to pandas e intro to data structures; quando precisar de muito alto desempenho utilizamos "polars", que tem a mesma API do pandas, mas trocamos para import polars como pl.

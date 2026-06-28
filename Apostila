@@ -1,0 +1,178 @@
+"""
+Este arquivo é um manual com várias informações básicas sobre a programação em python, retiradas do curso de Economia Computacional I, de 2026/1.
+Os exemplos contidos aqui foram testadas no Jupiter Notebook.
+Autora: Nicole Schultz Della Giustina
+"""
+
+"""
+PASSO A PASSO 
+1. Abrir pasta do programa com 'nome_do_programa'
+2. Criar ambiente virtual com o mesmo nome
+3. Abrir três pastas: docs, tests, nome_do_programa
+4. Em docs: requisitos (com requisitos do programa a partir do problema), projeto (estrutura de cada módulo dos códigos só com pass nas funções; aqui define número e quais módulos também, bem como o que vai ter em cada um, de funções a classes, objetos, etc., só não escreve o código em si ainda) Obs.: da para separar a estrutura dessa arquitetura e definições no projeto e deixar a parte dos módulos com pass em uma terceira pasta chamada 'codigos'
+5. Em testes: notebooks para cada módulo, agora testando as codificações de fato; depois testar em .py também
+6. Em nome_do_programa (apenas versões finais 001 e seguintes dos modulos .py testados)
+
+"""
+
+""" 
+1. Tipos de Variáveis
+
+1.1 Números:
+inteiros_int = 0
+racionais_float = 0.0
+
+1.2 String
+string_str = "" # utilizados para sequência de caracteres, podendo misturar letras, números e espaços. 
+
+1.3 Lógicos:
+True
+False # posso tanto atribuir eles a uma variável, como um tipo de variável (EX.: aprovado = True), como também posso usar operações relacionais/lógicos e ter essa variável como resultado
+
+1.4 Listas: armazenamento de elementos que podem ser acessados por índice, começando do 0
+lista = []
+nome_da_lista = [elem1, elem2, ....]; acesso elem1 com 'nome_da_lista[0]'
+#posso usar os elementos da lista sem guardá-los individualmente da seguinte forma:
+ex.:
+notas = [6, 5, 8, 9, 7] #lista com elementos
+soma = 0 #memoria de 'soma' como num int
+x = 0 #memoria de 'x' como num int
+while x < 5: #processamento de que enquanto x for menor que 5 (pois a lista tem posições de 0 a 4)
+    soma += notas[x] #ele irá somar o valor de notas[0], primeiro a nada e depois vai acrescentando os próximos ao resultado anterior
+    x += 1 #depois soma 1 e na prática passa à posição do próximo elemento da lista - até 4, último elemento e menor que 5
+print(f'média: {soma / x:5.2f}) #imprime a soma total feita na função e divide por x (o último x alcançado, no caso 5), e imprime como número float com 5carac e 2decim
+#Tuplas são listas imutáveis -> t = ('','','', ...); pode fazer operações de lista, mas não consigo associar externamente um valor para uma posição, então 't[0] = A' daria erro, ou já está na tupla informado, ou não está
+
+1.5 Dicionários:relação entre um dado e outro específico, como uma tabela
+d = {}
+nome_da_tabela = {'chave1': dado_associado,
+	          'chave2': dado_associado,
+	          'chave3': dado_associado,
+	          (...)                    }
+#diferente das listas, as chaves são os índices, então para acessar um dado_associado, usamos 'nome_da_tabela['chavex']; ele não aceita duas chaves iguais, cada dado_associado terá apenas uma chave)
+
+1.6 Conjuntos
+s = {}
+
+1.7 Classes: associa dados e operações a uma só estrutura; objeto é uma variável do tipo 'classe'.
+
+2. Operadores
+2.1 Relacionais e lógicos
+== (igualdade)
+<> (menor e maior)
+!= (diferente)
+<= >= (menor ou igual e maior ou igual)
+not (negação ou inversão)
+and (adição)
+or (alternativa)
++= (equivalente a somar a mesma coisa a outra, ex.: x = x + 1, pode ser escrito como x += 1)
+| (união de conjuntos)
+& (intersecção de conjuntos)
+^ (diferença de conjuntos, elementos que nao sao comuns)
+
+# Quando usados em combinação, o python executa primeiro os operadores relacionais e depois os lógicos na ordem acima mesmo.
+EX.: 
+nota = 8.5 
+media = 6
+aprovado = nota>= media
+print(aprovado)
+
+2.2 Posicionamento de str #uma string tem posições de 0 a n-1
+
+2.2.1 Concatenação: operadores matemáticos (+, *, -) para juntar, repetir ou retirar caracteres de strings
+
+2.2.2 Composição: para utilizar variáveis dentro de strings, usamos os marcadores de posição:
+%d
+%f
+%s # Marcadores de posição de cada tipos de variável; hoje o 'f"{}"' no início da str é mais prático.
+Ou ainda:
+%03d % variavel_da_posicao #0 _ _ (vai ficar 3 caracteres fixos preenchendo com 0 na frente se faltar na variável)
+%3d % variavel_da_posicao # _ _ _ (vai ficar 3 caracteres fixos preenchendo com 'espaço' na frente se faltar na variável)
+%-3d % variavel_da_posicao #0 _ _ (vai ficar 3 caracteres fixos preenchendo com 'espaço' atrás (pelo negativo) se faltar na variável)
+%5.2f #o num na posição do 5 indica o total de caracteres; o num na posição do 2 indica num de casas decimais
+- f"{}" #f-string permite colocar dados variáveis dentro da str por meio do {}
+
+2.2.3 Fatiamento: para separar strings 
+nome_str[0:2] # num na posição do 0 indica primeira posiçao da fatia; num da posição do 2 primeiro não incluso na fatia, como se fosse intervalo [). Se nao colocar numero no inicio ou final, ele pega do início ao final independente de quantos caracteres sejam. Ainda, se usar num negativo, ele conta do incio/fim - o numero de carct. indicados
+nome_str[::-1] #nova fatia inteira mas invertida.
+nome_str[::2] #fatia pegando um a cada dois caracteres da str
+
+2.3 Condicionais: if, elif e else; while
+if <condição a ser verificada>:
+    <o que deve acontecer se condição for verificada>
+# pode ter apenas uma consequência, ou seguir aqui embaixo com o que deve ocorrer se não verificar a condição com elif (novo if) ou else (último e único)
+
+<o que acontece inicialmente>
+while <condição de repetição a ser verificada>: #funciona como o if, só que ficará repetindo essas linhas eternamente enquanto a condição permanecer sendo verificada
+    <o que deve acontecer se condição for verificada>
+    <continuação da condição inicial> # se eu não colocar isso a repetição tenderia a ser eterna, pois não estou alterando a condição inicial (obs.: para interromper loop infinito usar Ctrl+C)
+#usar if <condição de término>:
+          break #para interromper while infinito a partir de uma condição específica	
+
+for #alternativa ao while quando queremos percorrer todos os elementos de uma lista (com 'for e in nome_da_lista') por exemplo, enquanto while é para quando não sabemos ainda bem quantas vezes vamos precisar repetir e precisamos de uma condição especifica para determinar isso
+ex.: #para pesquisar um elemento em toda uma lista
+nome_da_lista = [7, 9, 2, 3, 5, 16, 23, 52]
+x = int(input('Digite um número a pesquisar na lista: ')
+for e in nome_da_lista:
+    if e == p:
+	print('Elemento encontrado!')
+	break # como o for busca em toda lista elemento por elemento, precisamos indicar que se encontrar deve parar
+else:
+    print('Elemento não encontrado!')
+
+ex2.: #posso usar o for para descobrir o valor máximo ou mínimo de uma lista da seguinte forma:
+nome_da_lista = [7, 9, 2, 3, 5, 16, 23, 52]
+maximo = nome_da_lista[0] #indico para começar considerando o máximo o primeiro elemento; poderia começar com o num "0" direto se souber que não tem elementos negativos na lista
+for e in nome_da_lista: #com o for ele irá percorrer toda lista
+    if e > maximo: #se o primeiro elemento da lista for maior que o maximo definido (aqui justamente no prim elemento), ele irá substituir maximo por esse elemento
+	maximo = e #aqui ele substitui se confirma que o número comparado é maior que o anterior, e fará isso por toda lista
+print(maximo) #depois de percorrer toda lista ele retorna o 'e' que ficou como maximo ao final da verificação; o mesmo pode ser feito para achar o mínimo trocando a condição para '<'
+
+
+2.4 Outros operadores prontos
+% 2 == 0 #indica se um número é par, pois indica se na divisão por dois não sobra nada ('resto' zero)
+
+3. Funções prontas
+- print() #colocar informação na tela
+- len(onde_aplicar) #diz o número de caracteres do objeto 
+- input('') #pede a inserção de dado pelo usuário e retorna sempre uma str; se precisar usar o dado como int ou float convertemos com int/float(input(''))
+- import math; math.isclose(num1, num2, rel_tol=0.1) #função do módulo math (pronto) que compara dois numeros reais e diz se são próximos conforme parâmetro rel_tol padrão (10^-9) ou dado (=0.1 seria tolerância de 10% de diferença relativa entre os números)
+- range() #gera listas simples com o número de posições dado (ex.: for L in range(10), print(L) -> vai imprimir lista com num de 0 a 9; tbm pode indicar numero inicial e posição final na mesma lógica do intervalo [))
+- nome_da_lista.sort() #ordena uma lista e retorna uma nova lista ordenada
+- sorted(nome_da_lista) #utiliza a lista ordenada, mas não cria uma nova lista como a função anterior
+- nome_da_tabela.keys() #retorna as chaves de um dicionário
+- nome_da_tabela.values() #retorna os dados_associados de um dicionário
+- del() #deletar informação dada de lista, dicionário, etc.
+- nome_da_tabela.get() #busca chave em tabela, se não encontrar retorna None ou outra infor indicada na forma ('chave para busca', 'retorno alternativo')
+- set() #elimina repetições de dados; são como listas sem posições e também podem ser variáveis (ver 1.6)
+- nome_do_elemento.add() #adiciona o número dentro do parênteses ao elemento, que pode ser uma lista, um número, etc.
+- filter() #filtra listas com um parâmetro e um iterável/elemento a sere filtrado. Usamos, ex.: list(filter(a % 2 ==0 (parâmetro, numero par), [5, 6, 9, 2, 10] (lista a ser filtrada))), que retornará uma lista com os números pares
+- open ('nome_do_arquivo.txt', 'modo'); sempre seguida de nome_do_arquivo.close() #abrir e SEMPRE fechar um arquivo para usar em uma função; modos podem ser se acordo com o que será feito com o arquivo (r-leitura, w-escrita, a-escrita mantendo conteúdo já existente
+- nome_do_arquivo.write() #cria e escreve algo em um novo arquivo
+
+PROGRAMAÇÃO FUNCIONAL: quando escrevemos o código apenas na forma de funções, criando nossas próprias a partir de 'def nome_da_funcao():'
+#dentro do parênteses, posso indicar os parâmetros que a função vai utilizar, o tipo de variável e também o que ela retorna ao final ((peso:float, idade:int) -> imc:float)
+#depois de definida, para chamar a função usamos 'nome_da_funcao()', sendo que colocamos as variáveis no parentese se ele não recebe esse dado de outra entrada
+#return e print são coisas diferentes! return processa algo pedido, enquanto print faz aparecer algo pedido e já processado na tela
+#cuidar variável global (escrita fora das funções e acessíveis a todo módulo) e variáveis locais (endentadas e acessíveis apenas a função); para utilizar e mudar uma varável global dentro de uma função usamos 'global nome_da_variável', seguido pelo novo valor da variáve na linha abaixo 'nome_da_variavel' = 2 (minimizar o uso de global)
+#função recursiva, quando ao final a função chama ela mesma para seguir repetindo
+
+PROGRAMAÇÃO EM MÓDULOS E CLASSES: para agrupar funções definidas
+#todo arquivo .py é um módulo (tentar deixar cada módulo com no max uma página)
+#para usar um módulo em outro, basta importar com 'import nome_do_modulo'
+#em geral, devo ter pelo menos três módulos: es (funções de entrada e saída), processamento (funções de processamento), __main__ (modulo de controle, função única de chamar e rodas as demais)
+#se salvo tudo em uma pasta com o nome do programa, se chamar o nome da pasta ele roda automático o arquivo __main__ que estiver lá
+
+PROGRAMAÇÃO ORIENTADA A OBJETOS: para códigos que preciso guardar informações processadas previamente ou cujas funções utilizam os mesmos parâmetros
+#vejo que preciso mudar para POO se várias funções compartilham o mesmo conjunto de dados
+#aqui a lógica não é mais separar a programação por módulos de funções, mas pensar em cada objeto (como se fosse na vida real) e descrever tudo o que quero/preciso dele em uma única classe
+#uso 'class nome_do_objeto:' para começar as definições de dados e funções (que quando associadas a uma classe chamamos de métodos)de descrição desse objeto
+#a primeira coisa a fazer ao iniciar uma classe é chamar a função construtora dessa classe -> 'def __init__(self):' e estipular os atributos do objeto com self.atributo1 = xxxx; self.atributo2 = xxxx; (...)
+Ex.: 
+class Televisao: #por convenção usamos nome de classe com letra maiúscula
+    def __init__(self):
+	self.ligada = False
+	self.canal = 12
+#depois, podemos criar objetos da classe montada, informando apenas que 'nome_do_objeto = nome_da_classe()', da mesma forma como associávamos variáveis ao seu tipo antes; também podemos especificar os atributos desse novo objeto em específico com nome_do_objeto.atributo1 = xxxx, ou só chamar o atributo padrão da classe digitando nome_do_objeto.atributo1
+#com isso, podemos definir vários objetos em que todos tem os mesmos atributos gerais de uma classe, mas podendo inserir particularidades em cada um sem correr o risco de modificar dados globais como com a função global
+"""
